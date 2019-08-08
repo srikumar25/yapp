@@ -1,13 +1,22 @@
 
 
-${DIRS}:
-	+incdir ${PRJ_HOME}/agents/hbus \
-	+incdir ${PRJ_HOME}/agents/yapp \
-	+incdir ${PRJ_HOME}/agents/chan \
-	+incdir ${PRJ_HOME}/seq \
-	+incdir ${PRJ_HOME}/test \
-	+incdir ${PRJ_HOME}/common \
-	+incdir ${PRJ_HOME}/tb 
+DIRS = +incdir+${PRJ_HOME}/agents/hbus \
+	+incdir+${PRJ_HOME}/agents/yapp \
+	+incdir+${PRJ_HOME}/agents/chan \
+	+incdir+${PRJ_HOME}/seq \
+	+incdir+${PRJ_HOME}/test \
+	+incdir+${PRJ_HOME}/common \
+	+incdir+${PRJ_HOME}/rtl \
+	+incdir+${PRJ_HOME}/tb 
+
+I_DIRS = -incdir ${PRJ_HOME}/agents/hbus \
+	-incdir ${PRJ_HOME}/agents/yapp \
+	-incdir ${PRJ_HOME}/agents/chan \
+	-incdir ${PRJ_HOME}/rtl \
+	-incdir ${PRJ_HOME}/seq \
+	-incdir ${PRJ_HOME}/test \
+	-incdir ${PRJ_HOME}/common \
+	-incdir ${PRJ_HOME}/tb 
 
 ${INTF}:
 	${PRJ_HOME}/common/intf.sv \
@@ -39,3 +48,12 @@ sim:
 
 clean:
 	rm -rf INCA_libs/ *.log *.history *.dsn *.trn *.vcd *.vpd work modelsim.ini transcript
+
+iclean:
+	rm -rf INCA_libs/ *.log *.history *.dsn *.trn 
+
+irun1: irun_dirs
+	qrsh -V -cwd -verbose -q medium irun -sv -uvm +access+rw -disable_sem2009 +define+NCV -incdir ${PRJ_HOME}/common -incdir ${PRJ_HOME}/agents/yapp ${PRJ_HOME}/common/common_pkg.sv ${PRJ_HOME}/agents/yapp/yapp_pkg.sv ${PRJ_HOME}/rtl/yapp_dut.v ${PRJ_HOME}/tb/top.sv
+
+irun: 
+	qrsh -V -cwd -verbose -q medium irun -sv -uvm +access+rw -disable_sem2009 +define+NCV ${I_DIRS} ${PRJ_HOME}/rtl/yapp_dut.v ${PRJ_HOME}/common/common_pkg.sv ${PRJ_HOME}/agents/yapp/yapp_pkg.sv ${PRJ_HOME}/tb/top.sv
