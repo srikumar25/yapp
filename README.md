@@ -1,6 +1,14 @@
 # UVM
 
-This repository is going to be a collection of multiple projects/branch with each project containing a 
-small RTL and a UVM based TB. With each project, UVM learnings will be documented so that it can
-be used for debugging in the future. Each project can be experimented with by different features 
-and also by different people in the future.
+Yapp Project : Lab01
+---------------------
+Contains only yapp package's initial sequence item and environment and it's being tested by 
+creating an instance of env in yapp_basic_testcase. 
+
+To test the Yapp UVC created,Yapp_basic_testcase is being invoked in top file and the sequence item 
+has been randomized and its content printed. Basic hierarchy checked in this lab is :
+
+TB_Top -> Yapp_Testcase -> Yapp_Env -> Yapp_sequence
+
+Sequence and driver for Yapp UVC have not been created yet. Other UVCs such as HBUS UVC and Channel's
+reactive UVCs will be constructed in the upcoming Labs. 
