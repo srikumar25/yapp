@@ -13,6 +13,18 @@ rand bit [7:0] payload[];
 		`uvm_field_array_int(payload,UVM_ALL_ON)
 	`uvm_object_utils_end	
 
+constraint l1_array {
+		payload.size==length;
+}
+
+constraint LEN {
+	length != 0;
+}
+
+constraint ADDR {
+	address  <= 2;
+}
+
 function new(string name="yapp_seq_item");
 	super.new("yapp_seq_item");
 endfunction
