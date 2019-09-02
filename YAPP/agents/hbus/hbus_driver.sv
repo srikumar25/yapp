@@ -30,29 +30,34 @@ endfunction
 task run_phase(uvm_phase phase);
 hbus_seq_item req;
 logic [`DATA-1:0] temp_data;
+	forever
+	begin
+	wait(i1_vif.reset==1'b1)
 	seq_item_port.get_next_item(req);
 	`uvm_info("HBUS_DRV",$sformatf("Obtaining the configuration hbus basic seq"),UVM_LOW)
 	h1_item = req;
 	h1_item.print();
 	@(posedge i1_vif.clk);
 	h1_vif.hen = 1'b1;
-	h1_vif.haddr = req.haddr;
+	h1_vif.haddr = h1_item.haddr;
 		if(req.wr_rd==WR)
 		begin
 			h1_vif.hwr_rd = 1'b1;
-			h1_vif.hdata_in = req.wdata;
+			h1_vif.hdata_in = h1_item.wdata;
 		end
 		else if(req.wr_rd == RD)
 		begin
 			h1_vif.hwr_rd = 1'b0;
 			req.rdata = h1_vif.hdata_out;
 		end
-	seq_item_port.item_done(); 
 	@(posedge i1_vif.clk);
 	h1_vif.hen = 1'b0;
 	h1_vif.haddr = 'h0;
 	h1_vif.hwr_rd = 1'b0;
 	h1_vif.hdata_in = 'h0;
+	seq_item_port.item_done(); 
+	`uvm_info("HBUS_DRV",$sformatf("Finished with item_done"),UVM_LOW)
+	end
 
 endtask
 
