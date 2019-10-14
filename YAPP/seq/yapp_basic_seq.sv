@@ -3,7 +3,7 @@ class yapp_basic_seq extends uvm_sequence #(yapp_seq_item);
 
 	`uvm_object_utils(yapp_basic_seq)
 
-	yapp_sequencer y1_sqr;
+	//yapp_sequencer y1_sqr;
 
 	function new(string name="yapp_basic_seq");
 		super.new(name);
@@ -18,12 +18,11 @@ class yapp_basic_seq extends uvm_sequence #(yapp_seq_item);
 		
 
 	task body();
-		req = yapp_seq_item::type_id::create("req");
 		//y1_sqr = env.y1_agt.y_sqr;
 		`uvm_info("YAPP_SEQ",$sformatf("Inside the initial yapp basic seq"),UVM_LOW)
 		for(int i=0;i<=2;i++)
 		begin
-
+		req = yapp_seq_item::type_id::create("req");
 			 //Working cadence seq 
 			 //`uvm_do_with(req,{req.address==i+1;})
 			 //End of working macro
