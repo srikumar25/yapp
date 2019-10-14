@@ -9,9 +9,9 @@ rand logic [`ADDR-1:0] haddr;
 rand e_WR_RD wr_rd;
 
 	`uvm_object_utils_begin(hbus_seq_item)
+		`uvm_field_int(haddr,UVM_ALL_ON)
 		`uvm_field_int(wdata,UVM_ALL_ON)
 		`uvm_field_int(rdata,UVM_ALL_ON)
-		`uvm_field_int(haddr,UVM_ALL_ON)
 		`uvm_field_enum(e_WR_RD,wr_rd,UVM_ALL_ON)
 	`uvm_object_utils_end	
 

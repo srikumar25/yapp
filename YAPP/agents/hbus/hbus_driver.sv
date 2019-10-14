@@ -30,9 +30,9 @@ endfunction
 task run_phase(uvm_phase phase);
 hbus_seq_item req;
 logic [`DATA-1:0] temp_data;
+	wait(i1_vif.reset==1'b1)
 	forever
 	begin
-	wait(i1_vif.reset==1'b1)
 	seq_item_port.get_next_item(req);
 	`uvm_info("HBUS_DRV",$sformatf("Obtaining the configuration hbus basic seq"),UVM_LOW)
 	h1_item = req;

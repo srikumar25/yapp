@@ -9,8 +9,8 @@ hbus_sequencer h_sqr;
 hbus_driver h_drv;
 //hbus_monitor h_mnr;
 
-function new(string name="hbus_agent",uvm_component parent);
-	super.new("hbus_agent",parent);
+function new(string name,uvm_component parent);
+	super.new(name,parent);
 endfunction
 
 function void build_phase(uvm_phase phase);
@@ -22,7 +22,7 @@ function void build_phase(uvm_phase phase);
 endfunction
 
 function void connect_phase(uvm_phase phase);
-	//super.connect_phase(phase);
+	super.connect_phase(phase);
 	h_drv.seq_item_port.connect(h_sqr.seq_item_export);
 endfunction
 
