@@ -30,7 +30,7 @@ endfunction
 task run_phase(uvm_phase phase);
 hbus_seq_item req;
 logic [`DATA-1:0] temp_data;
-	wait(i1_vif.reset==1'b1)
+	wait(i1_vif.rst==1'b1)
 	forever
 	begin
 	seq_item_port.get_next_item(req);
