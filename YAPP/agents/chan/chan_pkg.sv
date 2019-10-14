@@ -12,7 +12,7 @@ import uvm_pkg::*;
 `include "chan_seq_item.sv"
 `include "chan_driver.sv"
 `include "chan_sequencer.sv"
-//`include "chan_monitor.sv"
+`include "chan_monitor.sv"
 `include "chan_agent_cfg.sv"
 `include "chan_agent.sv"
 `include "chan_env.sv"
