@@ -18,7 +18,7 @@ yapp_env e1;
 yapp_dut y1(
 		// Common Signals
 		.clk(i1_if.clk),
-		.reset(i1_if.reset),
+		.reset(i1_if.rst),
 		// Yapp interface
                 .in_data(y_if.in_data),
 		.in_data_vld(y_if.in_data_vld),
@@ -32,7 +32,7 @@ yapp_dut y1(
 		.hdata_out(h_if.hdata_out),
 		.haddr(h_if.haddr),
 		.hen(h_if.hen),
-		.hwr_rd(h_if.hwr_rd),
+		.hw_rd(h_if.hwr_rd),
                 .error(i1_if.error)
 		);
 
@@ -40,8 +40,8 @@ yapp_dut y1(
 initial
 begin
 	i1_if.clk = 1'b0;
-	i1_if.reset = 1'b0;
-	#30 i1_if.reset = 1'b1;
+	i1_if.rst = 1'b0;
+	#30 i1_if.rst = 1'b1;
 	//e1.y1_item.print();
 	//#100 $finish;
 end
