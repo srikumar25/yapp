@@ -1,14 +1,12 @@
 # UVM
 
-Yapp Project : Lab01
+Yapp Project : Lab04
 ---------------------
-Contains only yapp package's initial sequence item and environment and it's being tested by 
-creating an instance of env in yapp_basic_testcase. 
+Contains yapp,hbus active UVC on the master side and channels 0,1 & 2 reactive UVC on the slave side.
 
 To test the Yapp UVC created,Yapp_basic_testcase is being invoked in top file and the sequence item 
-has been randomized and its content printed. Basic hierarchy checked in this lab is :
+has been randomized and its content printed. 
 
-TB_Top -> Yapp_Testcase -> Yapp_Env -> Yapp_sequence
-
-Sequence and driver for Yapp UVC have not been created yet. Other UVCs such as HBUS UVC and Channel's
-reactive UVCs will be constructed in the upcoming Labs. 
+Currently all the different channels are being tested by writing to the different channel interfaces 
+through addresses. Currently all the writes which are being sent from the input side are being tapped 
+through the output interface of different channels and they're checked for validity through the scoreboard.
