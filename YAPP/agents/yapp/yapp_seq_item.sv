@@ -18,7 +18,7 @@ constraint l1_array {
 }
 
 constraint LEN {
-	length != 0;
+	length != 0; length <= 256;
 }
 
 constraint ADDR {

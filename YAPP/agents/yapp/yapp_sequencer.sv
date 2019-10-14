@@ -1,14 +1,14 @@
 
-typedef uvm_sequencer#(yapp_seq_item) yapp_sequencer;
+//typedef uvm_sequencer#(yapp_seq_item) yapp_sequencer;
 //typedef yapp_sequencer extends uvm_sequencer#(yapp_seq_item); 
 //yapp_sequencer;
 
-/*class yapp_sequencer extends uvm_sequencer;
+class yapp_sequencer extends uvm_sequencer#(yapp_seq_item);
 	
 	`uvm_component_utils(yapp_sequencer)
 
-function void new("yapp_sequencer",null);
-	super.new(yapp_sequencer,null);
+function new(string name,uvm_component parent);
+	super.new(name,parent);
 endfunction
 
 function void build_phase(uvm_phase phase);
@@ -19,5 +19,8 @@ function void connect_phase(uvm_phase phase);
 	super.connect_phase(phase);
 endfunction
 
+task run_phase(uvm_phase phase);
+endtask
+
 endclass 
-*/
+

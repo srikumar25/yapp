@@ -21,8 +21,5 @@ function void build_phase(uvm_phase phase);
 		`uvm_fatal("YAPP_DRV","Failed to get virtual common interface ") */
 endfunction
 
-task run_phase(uvm_phase phase);
-endtask
-
 endclass
 
