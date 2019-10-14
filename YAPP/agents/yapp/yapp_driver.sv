@@ -39,16 +39,16 @@ task run_phase(uvm_phase phase);
 			`uvm_info("YAPP_DRV_RUN_PHASE",$sformatf("Printing the seq_item from YAPP_DRIVER"),UVM_LOW)
 			req.print();
 			
-		if(i1_vif.reset==1'b0)
+		if(i1_vif.rst==1'b0)
 		begin
 			@(negedge i1_vif.clk);
 			y1_vif.in_data_vld = 1'b0;
 			y1_vif.in_data = 'h0;
 		end
-		else if(i1_vif.reset==1'b1)
+		else if(i1_vif.rst==1'b1)
 		begin
 				@(negedge i1_vif.clk);
-				`uvm_info("YAPP_DRV_RUN_PHASE",$sformatf("Reset value is %d",i1_vif.reset),UVM_LOW)
+				`uvm_info("YAPP_DRV_RUN_PHASE",$sformatf("Reset value is %d",i1_vif.rst),UVM_LOW)
 				`uvm_info("YAPP_DRV",$sformatf("Address and length are %d, %d",req.address,req.length),UVM_LOW)
 				for(int i=0;i<=req.length+1;i++)
 				begin
